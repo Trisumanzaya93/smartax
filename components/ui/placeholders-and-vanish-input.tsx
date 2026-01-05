@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { AlertDialogDemo } from "./modal";
 
 export function PlaceholdersAndVanishInput({
   placeholders,
@@ -244,6 +245,14 @@ export function PlaceholdersAndVanishInput({
           <path d="M13 6l6 6" />
         </motion.svg>
       </button>
+
+      <div
+        className="absolute right-12 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full text-white text-xl bg-black  flex items-center justify-center"
+      >
+        
+      <AlertDialogDemo />
+      </div>
+      
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
         <AnimatePresence mode="wait">

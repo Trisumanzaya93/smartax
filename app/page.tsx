@@ -1,6 +1,11 @@
+'use client'
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <main className="h-screen w-screen bg-[#F8E36A] flex flex-col items-center ">
       <div className="w-full max-w-360 h-full flex items-center justify-center relative overflow-hidden">
@@ -9,8 +14,8 @@ export default function Home() {
           <Image src="/city.png" alt="city" className="w-full h-1/2" width={500} height={500} />
         </div>
         <div className="w-[50%] flex">
-          <div className="-ml-32 mt-20  animate-bounce">
-            <Image src="/bee.png" alt="bee" className="w-60 drop-shadow-xl" width={300} height={300} />
+          <div className="-ml-24 mr-20 mt-20  animate-bounce">
+            <Image src="/bee.png" alt="bee" className="w-20 drop-shadow-xl" width={300} height={300} />
           </div>
           <div className="flex flex-col">
             <div className="flex">
@@ -24,18 +29,18 @@ export default function Home() {
               for Adaptive Tax <br/> Education
             </p>
             <div className="flex gap-4 mt-8">
-              <a
-                href="/smartax"
-                className="bg-[#06275D] text-white px-8 py-3 rounded-xl shadow hover:opacity-80 transition font-bold"
+              <Button
+                onClick={()=> router.push('/home')}
+                className="bg-[#06275D] text-white px-8 py-6 rounded-xl shadow hover:opacity-80 transition font-bold"
               >
                 Go To Smartax
-              </a>
-              <a
-                href="/about"
-                className="bg-[#06275D] text-white px-8 py-3 rounded-xl shadow hover:opacity-80 transition font-bold"
+              </Button>
+              <Button
+                onClick={()=> router.push('/detail')}
+                className="bg-[#06275D] text-white px-8 py-6 rounded-xl shadow hover:opacity-80 transition font-bold"
               >
                 Learn About Us
-              </a>
+              </Button>
             </div>
           </div>
         </div>
