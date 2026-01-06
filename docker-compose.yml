@@ -23,7 +23,7 @@ services:
   # Next.js Web App
   # =========================
   nextjs:
-    build: ./smartax
+    build: ./
     container_name: smartax-nextjs
     restart: always
     ports:
