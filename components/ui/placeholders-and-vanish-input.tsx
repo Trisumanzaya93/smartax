@@ -4,15 +4,20 @@ import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { AlertDialogDemo } from "./modal";
+import { ClusterResult } from "@/app/home/home.type";
 
 export function PlaceholdersAndVanishInput({
   placeholders,
   onChange,
   onSubmit,
+  setData,
+  setFirstLoad
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  setData: React.Dispatch<React.SetStateAction<ClusterResult[]>>;
+  setFirstLoad: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -249,8 +254,8 @@ export function PlaceholdersAndVanishInput({
       <div
         className="absolute right-12 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full text-white text-xl bg-black  flex items-center justify-center"
       >
-        
-      <AlertDialogDemo />
+
+      <AlertDialogDemo setData={setData} setFirstLoad={setFirstLoad} />
       </div>
       
 

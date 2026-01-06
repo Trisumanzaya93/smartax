@@ -47,6 +47,9 @@ export async function POST(req: Request) {
         title: true,
       },
     });
+    if (seminars.length === 0) return successResponse({
+      clusters: []
+    }, "issue created successfully");
 
     // 4️⃣ Unified response (SAMA DENGAN CSV)
     const response = {
@@ -61,36 +64,13 @@ export async function POST(req: Request) {
               cleanText: issue.cleanText,
             },
           ],
-          seminars: [
-            ...seminars, // data masih mocked
-            {
-              id: 1,
-              title: 'Seminar Pajak 101'
-            },
-            {
-              id: 2,
-              title: 'Seminar Pajak 102'
-            },
-            {
-              id: 3,
-              title: 'Pengantar Perpajakan,Asas pemungutan pajak",Microlearning,Template PPT sosialisasi SPT WP OP'
-            },
-            {
-              id: 4,
-              title: 'Seminar Pajak 104'
-            },
-            {
-              id: 5,
-              title: 'Microlearning Pajak'
-            }
-          ],
+          seminars,
         },
       ],
     };
 
     return successResponse(response, "issue created successfully");
   } catch (error) {
-    console.error(error);
     return errorResponse("Failed to create issue", 500, error);
   }
 }

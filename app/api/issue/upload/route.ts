@@ -40,11 +40,11 @@ export async function POST(req: Request) {
     });
 
     if (!rows.length) {
-      return errorResponse("CSV is empty", 400);
+      return errorResponse("CSV tidak boleh kosong", 400);
     }
 
     if (!("Masalah" in rows[1])) {
-      return errorResponse("CSV must contain 'Masalah' column", 400);
+      return errorResponse("CSV harus memiliki kolom 'Masalah'", 400);
     }
 
     // 2️⃣ Validate rows
@@ -139,45 +139,45 @@ export async function POST(req: Request) {
     // 6️⃣ Attach seminars (no duplicates)
     const clusterIds = Object.keys(clusterMap).map(Number);
 
-    // const seminars = await prisma.seminar.findMany({
-    //   where: {
-    //     cluster: { in: clusterIds },
-    //   },
-    // });
+    const seminars = await prisma.seminar.findMany({
+      where: {
+        cluster: { in: clusterIds },
+      },
+    });
 
-    // MOCKED DATA SEMINAR
-    const seminars = [
-            {
-              id: 1,
-              title: 'Seminar Pajak 101',
-              cluster: 0
-            },
-            {
-              id: 2,
-              title: 'Seminar Pajak 102',
-              cluster: 1
-            },
-            {
-              id: 3,
-              title: 'Pengantar Perpajakan,Asas pemungutan pajak",Microlearning,Template PPT sosialisasi SPT WP OP',
-              cluster: 2
-            },
-            {
-              id: 4,
-              title: 'Seminar Pajak 104',
-              cluster: 3
-            },
-            {
-              id: 5,
-              title: 'Microlearning Pajak',
-              cluster: 4
-            },
-            {
-              id: 6,
-              title: 'Microlearning Pajak',
-              cluster: 5
-            }
-          ]
+    // // MOCKED DATA SEMINAR
+    // const seminars = [
+    //         {
+    //           id: 1,
+    //           title: 'Seminar Pajak 101',
+    //           cluster: 0
+    //         },
+    //         {
+    //           id: 2,
+    //           title: 'Seminar Pajak 102',
+    //           cluster: 1
+    //         },
+    //         {
+    //           id: 3,
+    //           title: 'Pengantar Perpajakan,Asas pemungutan pajak",Microlearning,Template PPT sosialisasi SPT WP OP',
+    //           cluster: 2
+    //         },
+    //         {
+    //           id: 4,
+    //           title: 'Seminar Pajak 104',
+    //           cluster: 3
+    //         },
+    //         {
+    //           id: 5,
+    //           title: 'Microlearning Pajak',
+    //           cluster: 4
+    //         },
+    //         {
+    //           id: 6,
+    //           title: 'Microlearning Pajak',
+    //           cluster: 5
+    //         }
+    //       ]
 
     seminars.forEach((seminar) => {
       clusterMap[seminar.cluster].seminars.push({
@@ -198,7 +198,6 @@ export async function POST(req: Request) {
       "CSV processed successfully"
     );
   } catch (error) {
-    console.error(error);
     return errorResponse("Failed to process CSV", 500, error);
   }
 }

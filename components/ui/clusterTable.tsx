@@ -44,10 +44,9 @@ type ClusterResult = {
 
 export function ClusterTable({ data }: { data: ClusterResult[] }) {
   const [openCluster, setOpenCluster] = useState<number | null>(null);
-  console.log(data);
 
   return (
-    <div className="w-full rounded-xl border bg-white">
+    <div className="w-full rounded-xl bg-white">
       <Table className="min-w-full">
         <TableHeader>
           <TableRow>
