@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/response";
+import "dotenv/config";
 
 export async function POST(req: Request) {
   try {
@@ -17,7 +18,7 @@ export async function POST(req: Request) {
     }
 
     // 1️⃣ Call Python ML API
-    const mlRes = await fetch("http://localhost:8000/predict", {
+    const mlRes = await fetch(`http://${process.env.PREDICT_SERVICE}:8000/predict`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),

@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { successResponse, errorResponse } from "@/lib/response";
 import { parse } from "csv-parse/sync";
+import "dotenv/config";
 
 type CsvRow = {
   Masalah?: string;
@@ -83,7 +84,7 @@ export async function POST(req: Request) {
     }
 
     // 3️⃣ Call ML API (batch)
-    const mlRes = await fetch("http://localhost:8000/predict/batch", {
+    const mlRes = await fetch(`http://${process.env.PREDICT_SERVICE}:8000/predict/batch`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ texts: validTexts }),
