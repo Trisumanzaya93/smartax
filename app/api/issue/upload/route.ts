@@ -15,6 +15,7 @@ type ValidationError = {
 type Seminar = {
   id: number;
   title: string;
+  cluster: number;
 };
 
 type MLResult = {
@@ -44,7 +45,7 @@ export async function POST(req: Request) {
       return errorResponse("CSV tidak boleh kosong", 400);
     }
 
-    if (!("Masalah" in rows[1])) {
+    if (!rows[0] || !("Masalah" in rows[0])) {
       return errorResponse("CSV harus memiliki kolom 'Masalah'", 400);
     }
 
@@ -97,7 +98,7 @@ export async function POST(req: Request) {
     const predictions: MLResult[] = await mlRes.json();
 
     // 4️⃣ Save issues
-    const createdIssues = await Promise.all(
+    const createdIssues: { id: number; rawText: string; cluster: number }[] = await Promise.all(
       predictions.map((p) =>
         prisma.issue.create({
           data: {
@@ -116,7 +117,7 @@ export async function POST(req: Request) {
         cluster: number;
         count: number;
         issues: { id: number; rawText: string }[];
-        seminars: Array<Seminar>;
+        seminars: Array<{ id: number; title: string }>;
       }
     > = {};
 
@@ -140,11 +141,11 @@ export async function POST(req: Request) {
     // 6️⃣ Attach seminars (no duplicates)
     const clusterIds = Object.keys(clusterMap).map(Number);
 
-    const seminars = await prisma.seminar.findMany({
+    const seminars = (await prisma.seminar.findMany({
       where: {
         cluster: { in: clusterIds },
       },
-    });
+    })) as Seminar[];
 
     // // MOCKED DATA SEMINAR
     // const seminars = [
@@ -179,9 +180,10 @@ export async function POST(req: Request) {
     //           cluster: 5
     //         }
     //       ]
-
     seminars.forEach((seminar) => {
-      clusterMap[seminar.cluster].seminars.push({
+      const clusterEntry = clusterMap[seminar.cluster];
+      if (!clusterEntry) return;
+      clusterEntry.seminars.push({
         id: seminar.id,
         title: seminar.title,
       });
