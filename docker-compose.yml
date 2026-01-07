@@ -32,7 +32,7 @@ services:
       - mysql
     environment:
       NODE_ENV: production
-      DATABASE_URL: mysql://smartax_user:smartax_password@mysql:3306/smartax
+      DATABASE_URL: mysql://smartax_user:mafia2012@mysql:3306/smartax
 
 # =========================
 # Volumes
