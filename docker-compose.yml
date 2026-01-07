@@ -10,7 +10,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: mafia2012
-      MYSQL_DATABASE: mysql
+      MYSQL_DATABASE: smartax
       MYSQL_USER: smartax_user
       MYSQL_PASSWORD: mafia2012
     volumes:
