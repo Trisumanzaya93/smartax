@@ -41,16 +41,15 @@ export async function POST(req: Request) {
     });
 
     // 3️⃣ Get seminars for this cluster
-    const seminars = await prisma.seminar.findMany({
-      where: { cluster },
-      select: {
-        id: true,
-        title: true,
-      },
+    const seminars = await prisma.materi.findMany({
+      where: { cluster }
     });
     if (seminars.length === 0) return successResponse({
       clusters: []
     }, "issue created successfully");
+
+    console.log('Found seminars:', seminars);
+    
 
     // 4️⃣ Unified response (SAMA DENGAN CSV)
     const response = {
@@ -72,6 +71,57 @@ export async function POST(req: Request) {
 
     return successResponse(response, "issue created successfully");
   } catch (error) {
+    return errorResponse("Failed to create issue", 500, error);
+  }
+}
+
+// type Params = {
+//   params: Promise<{
+//     id: string;
+//   }>;
+// };
+
+// export async function GET(
+//   req: Request,
+// ) {
+//   try {
+//     console.log(req);
+//     const body = await req.json();
+//     console.log(body);
+    
+//     // const result = await prisma.materi.findUnique({
+//     //   where: {
+//     //     id: Number(1),
+//     //   },
+//     // });
+//     // return successResponse(result, "materi retrieved successfully");
+//   } catch (error) {
+//     return errorResponse("Failed to create issue", 500, error);
+//   }
+// }
+
+
+export async function GET(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+
+    const materi = await prisma.materi.findUnique({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    if (!materi) {
+
+      return errorResponse("Failed to create issue", 404);
+    }
+
+   
+    return successResponse(materi, "materi retrieved successfully");
+  } catch (error) {
+    console.error(error);
     return errorResponse("Failed to create issue", 500, error);
   }
 }

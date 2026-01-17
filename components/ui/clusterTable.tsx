@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 import { EmptyState } from "./emptyData";
+import { useRouter } from "next/navigation";
 
 export type UploadResult = {
   totalRows: number;
@@ -30,7 +31,7 @@ type Issue = {
 
 type Seminar = {
   id: number;
-  title: string;
+  answer: string;
 };
 
 type ClusterResult = {
@@ -44,6 +45,7 @@ type ClusterResult = {
 
 export function ClusterTable({ data }: { data: ClusterResult[] }) {
   const [openCluster, setOpenCluster] = useState<number | null>(null);
+  const router = useRouter()
 
   return (
     <div className="w-full rounded-xl bg-white">
@@ -78,9 +80,11 @@ export function ClusterTable({ data }: { data: ClusterResult[] }) {
                   <TableCell>
                     <div className="flex flex-wrap gap-2">
                       {cluster.seminars.map((s) => (
-                        <Badge key={s.id} variant="secondary">
-                          {s.title}
-                        </Badge>
+                        <button key={s.id} onClick={()=> router.push(`/home/${s.id}`)}>
+                          <Badge variant="secondary">
+                            {s.answer}
+                          </Badge>
+                        </button>
                       ))}
                     </div>
                   </TableCell>

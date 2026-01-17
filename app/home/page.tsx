@@ -44,7 +44,7 @@ export default function Home() {
       );
 
       const seminarMatch = cluster.seminars.some((sem) =>
-        sem.title.toLowerCase().includes(s)
+        sem.answer.toLowerCase().includes(s)
       );
 
       return issueMatch || seminarMatch;

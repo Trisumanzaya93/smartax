@@ -5,7 +5,7 @@ type Issue = {
 
 type Seminar = {
   id: number;
-  title: string;
+  answer: string;
 };
 
 type ClusterResult = {
@@ -23,7 +23,7 @@ export function exportClustersToCSV(data: ClusterResult[]) {
 
   data.forEach((cluster) => {
     const seminarTitles = cluster.seminars
-      .map((s) => s.title)
+      .map((s) => s.answer)
       .join("; ");
 
     cluster.issues.forEach((issue) => {

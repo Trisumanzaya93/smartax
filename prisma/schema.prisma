@@ -27,3 +27,14 @@ model Seminar {
   title       String
   cluster     Int
 }
+
+model Materi {
+  id        Int      @id @default(autoincrement())
+  cluster   Int
+  question  String
+  answer    String
+  keywords  Json
+  link      String?
+
+  createdAt DateTime @default(now())
+}

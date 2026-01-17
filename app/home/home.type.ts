@@ -1,6 +1,6 @@
 export interface Seminar {
   id: number;
-  title: string;
+  answer: string;
 }
 
 export interface Issue {
