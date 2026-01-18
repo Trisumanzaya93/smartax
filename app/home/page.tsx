@@ -1,5 +1,8 @@
 "use client";
 
+
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../store";
 import Image from "next/image";
 import { PlaceholdersAndVanishInput } from "../../components/ui/placeholders-and-vanish-input";
 import { ClusterTable } from "@/components/ui/clusterTable";
@@ -11,13 +14,17 @@ import { exportClustersToCSV } from "@/lib/exportCsv";
 import { createIssueFromText } from "./home.handler";
 import { ClusterResult } from "./home.type";
 import { toast } from "sonner";
+import { setData, setFirstLoad } from "@/store/homeSlice";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const data = useSelector((state: RootState) => state.home.data);
+  const firstLoad = useSelector((state: RootState) => state.home.firstLoad)
   const [search, setSearch] = useState("");
   const [text, setText] = useState("");
   const [selectedCluster, setSelectedCluster] = useState("all");
-  const [firstLoad, setFirstLoad] = useState(true);
-  const [data, setData] = useState<ClusterResult[]>([]);
+  // const [firstLoad, setFirstLoad] = useState(true);
+  // const [data, setData] = useState<ClusterResult[]>([]);
 
   const clusters = useMemo(
     () => (data.map((d: ClusterResult) => d.cluster)),
@@ -92,9 +99,9 @@ export default function Home() {
       e.preventDefault();
 
       const result = await createIssueFromText(text);
-      setData(result.clusters);
-      
-      setFirstLoad(false);
+      dispatch(setData(result.clusters))
+      // setData(result.clusters);
+      dispatch(setFirstLoad(false))
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       mappedErrorMessages(message);
@@ -117,8 +124,6 @@ export default function Home() {
               placeholders={placeholders}
               onChange={handleChange}
               onSubmit={onSubmit}
-              setData={setData}
-              setFirstLoad={setFirstLoad}
             />
           </div> :
             <div className="  h-full w-full flex flex-col px-10 mt-20">
@@ -154,8 +159,6 @@ export default function Home() {
                   placeholders={placeholders}
                   onChange={handleChange}
                   onSubmit={onSubmit}
-                  setData={setData}
-                  setFirstLoad={setFirstLoad}
                 />
               </div>
             </div>

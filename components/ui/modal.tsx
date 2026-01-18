@@ -14,11 +14,13 @@ import { FileUpload } from "./file-upload"
 import { validateCSVFile } from "@/lib/validationCsv"
 import { toast } from "sonner"
 import { useState } from "react"
-import { ClusterResult } from "@/app/home/home.type"
 import { uploadCSV } from "@/lib/uploadCsv"
+import { useDispatch } from "react-redux";
+import { setData, setFirstLoad } from "@/store/homeSlice"
 
-export function AlertDialogDemo({ setData, setFirstLoad }: { setData: React.Dispatch<React.SetStateAction<ClusterResult[]>>; setFirstLoad: React.Dispatch<React.SetStateAction<boolean>> }) {
+export function AlertDialogDemo() {
   const [file, setFile] = useState<File | null>(null);
+  const dispatch = useDispatch();
 
   return (
     <AlertDialog>
@@ -52,8 +54,8 @@ export function AlertDialogDemo({ setData, setFirstLoad }: { setData: React.Disp
               if (!file) return;
               const result = await uploadCSV(file);
 
-              setData(result.data);
-              setFirstLoad(false);
+               dispatch(setData(result.data))
+              dispatch(setFirstLoad(false))
             } catch (error) {
               const message = error instanceof Error ? error.message : String(error);
               toast.error(message, { position: "top-right" })
