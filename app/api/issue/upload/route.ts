@@ -13,9 +13,11 @@ type ValidationError = {
 };
 
 type Seminar = {
-  id: number;
-  title: string;
-  cluster: number;
+  cluster: number,
+  question: string,
+  answer: string,
+  keywords: Array<string>,
+  link?: string,
 };
 
 type MLResult = {
@@ -117,7 +119,7 @@ export async function POST(req: Request) {
         cluster: number;
         count: number;
         issues: { id: number; rawText: string }[];
-        seminars: Array<{ id: number; title: string }>;
+        seminars: Array<Seminar>;
       }
     > = {};
 
@@ -141,11 +143,11 @@ export async function POST(req: Request) {
     // 6️⃣ Attach seminars (no duplicates)
     const clusterIds = Object.keys(clusterMap).map(Number);
 
-    const seminars = (await prisma.seminar.findMany({
+    const seminars = (await prisma.materi.findMany({
       where: {
         cluster: { in: clusterIds },
       },
-    })) as Seminar[];
+    }) as Seminar[]);
 
     // // MOCKED DATA SEMINAR
     // const seminars = [
@@ -184,8 +186,7 @@ export async function POST(req: Request) {
       const clusterEntry = clusterMap[seminar.cluster];
       if (!clusterEntry) return;
       clusterEntry.seminars.push({
-        id: seminar.id,
-        title: seminar.title,
+        ...seminar,
       });
     });
 

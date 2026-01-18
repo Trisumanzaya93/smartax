@@ -45,8 +45,7 @@ export default function Detail() {
           <Table className="min-w-full">
             <TableHeader>
               <TableRow>
-                <TableHead className="">Masalah</TableHead>
-                <TableHead className="">Jawaban</TableHead>
+                <TableHead className="">Rekomendasi</TableHead>
                 <TableHead>Aksi</TableHead>
               </TableRow>
             </TableHeader>
@@ -54,12 +53,9 @@ export default function Detail() {
             <TableBody>
               <TableRow>
                 <TableCell className="max-w-md whitespace-normal wrap-break-word">
-                  {materi?.question}
-                </TableCell>
-                <TableCell className="max-w-md whitespace-normal wrap-break-word">
                   {materi?.answer}
                 </TableCell>
-                <TableCell className="max-w-md whitespace-normal wrap-break-word flex justify-center items-center">
+                <TableCell className="max-w-md whitespace-normal wrap-break-word">
                   {materi?.link && <Button
                     onClick={() => {
                       if(materi.link) {

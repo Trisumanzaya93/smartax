@@ -79,13 +79,14 @@ export function ClusterTable({ data }: { data: ClusterResult[] }) {
 
                   <TableCell>
                     <div className="flex flex-wrap gap-2">
-                      {cluster.seminars.map((s) => (
-                        <button key={s.id} onClick={()=> router.push(`/home/${s.id}`)}>
+                      {cluster.seminars.length === 0 ? <Badge variant="secondary">Mohon maaf, saat ini SMARTAX belum dapat menemukan informasi yang sesuai. Silakan datang ke KPP terdekat dengan membawa identitas diri.</Badge> : cluster.seminars.map((s) => (
+                        <button key={s.id} onClick={() => router.push(`/home/${s.id}`)} className="hover:cursor-pointer">
                           <Badge variant="secondary">
                             {s.answer}
                           </Badge>
                         </button>
                       ))}
+
                     </div>
                   </TableCell>
 
