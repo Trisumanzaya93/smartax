@@ -10,7 +10,7 @@ export default function Home() {
     <main className="h-screen w-screen bg-[#F8E36A] flex flex-col items-center ">
       <div className="w-full max-w-360 h-full flex items-center justify-center relative overflow-hidden">
         <div className="w-[50%] h-full flex justify-center items-center pl-10">
-          <Image src="/djp-logo.png" alt="city" className="absolute w-48 h-16 mt-5 top-0 left-0 bg-red-400" width={500} height={500} />
+          <Image src="/djp-logo.png" alt="city" className="absolute w-48 h-16 mt-5 top-0 left-0" width={500} height={500} />
           <Image src="/city.png" alt="city" className="w-full h-1/2" width={500} height={500} />
         </div>
         <div className="w-[50%] flex">
