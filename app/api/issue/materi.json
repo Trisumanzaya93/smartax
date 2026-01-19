@@ -1,0 +1,66 @@
+[
+  {
+    "id": 21,
+    "cluster": 7,
+    "question": "Bagaimana caranya Aktivasi npwp",
+    "answer": "Buka Coretax DJP > Daftar Akun > Aktivasi > Input NIK & NPWP > Verifikasi OTP (Email/HP) > Buat Password.",
+    "link": "https://youtu.be/61spGSQnceA?si=kaR-5gs9y_utWcdy",
+    "keywords": "Aktivasi npwp"
+  },
+  {
+    "id": 22,
+    "cluster": 7,
+    "question": "Ingin tahu soal coretax",
+    "answer": "Kunjungi halaman bantuan khusus Coretax",
+    "link": "https://pajak.go.id/id/reformdjp/faq",
+    "keywords": "Tahu coretax, ingin tahu coretax, soal coretax"
+  },
+  {
+    "id": 23,
+    "cluster": 7,
+    "question": "Ingin tahu soal Lapor SPT PPh",
+    "answer": "Kunjungi halaman tanya jawab laporan tahunan",
+    "link": "https://pajak.go.id/id/faq-laporan-tahunan",
+    "keywords": "Tahu lapor spt, lapor spt pph"
+  },
+  {
+    "id": 24,
+    "cluster": 7,
+    "question": "Bagaimana cara aktivasi coretax",
+    "answer": "Kunjungi artikel panduan aktivasi akun dan kode otorisasi",
+    "link": "https://www.pajak.go.id/id/artikel/panduan-praktis-aktivasi-akun-dan-kode-otorisasi-djp",
+    "keywords": "Apa coretax, aktivasi coretax, coretax"
+  },
+  {
+    "id": 25,
+    "cluster": 7,
+    "question": "Layanan Pelaporan Pajak",
+    "answer": "Kunjungi portal layanan pelaporan perpajakan",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/pelaporan",
+    "keywords": "pelaporan pajak"
+  },
+  {
+    "id": 26,
+    "cluster": 7,
+    "question": "Layanan Pembayaran Pajak",
+    "answer": "Kunjungi portal layanan pembayaran perpajakan",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/pembayaran",
+    "keywords": "Pembayaran pajak"
+  },
+  {
+    "id": 27,
+    "cluster": 7,
+    "question": "Layanan Administrasi Pajak",
+    "answer": "Kunjungi portal layanan administrasi digital",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/layanan-digital",
+    "keywords": "Administrasi pajak"
+  },
+  {
+    "id": 28,
+    "cluster": 7,
+    "question": "Jawaban pertanyaan selain diatas",
+    "answer": "Mohon maaf, saat ini SMARTAX belum dapat menemukan informasi yang sesuai. Silakan datang ke KPP terdekat dengan membawa identitas diri.",
+    "link": null,
+    "keywords": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "cluster": 0,
+    "question": "Bagaimana caranya Aktivasi npwp",
+    "answer": "Buka Coretax DJP > Daftar Akun > Aktivasi > Input NIK & NPWP > Verifikasi OTP (Email/HP) > Buat Password.",
+    "link": "https://youtu.be/61spGSQnceA?si=kaR-5gs9y_utWcdy",
+    "keywords": ["Aktivasi npwp"]
+  },
+  {
+    "cluster": 0,
+    "question": "Ingin tahu soal coretax",
+    "answer": "Kunjungi halaman bantuan khusus Coretax",
+    "link": "https://pajak.go.id/id/reformdjp/faq",
+    "keywords": ["Tahu coretax", "ingin tahu coretax", "soal coretax"]
+  },
+  {
+    "cluster": 0,
+    "question": "Ingin tahu soal Lapor SPT PPh",
+    "answer": "Kunjungi halaman tanya jawab laporan tahunan",
+    "link": "https://pajak.go.id/id/faq-laporan-tahunan",
+    "keywords": ["Tahu lapor spt", "lapor spt pph"]
+  },
+  {
+    "cluster": 0,
+    "question": "Bagaimana cara aktivasi coretax",
+    "answer": "Kunjungi artikel panduan aktivasi akun dan kode otorisasi",
+    "link": "https://www.pajak.go.id/id/artikel/panduan-praktis-aktivasi-akun-dan-kode-otorisasi-djp",
+    "keywords": ["Aktivasi coretax", "coretax"]
+  },
+  {
+    "cluster": 0,
+    "question": "Layanan Pelaporan Pajak",
+    "answer": "Kunjungi portal layanan pelaporan perpajakan",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/pelaporan",
+    "keywords": ["pelaporan pajak"]
+  },
+  {
+    "cluster": 0,
+    "question": "Layanan Pembayaran Pajak",
+    "answer": "Kunjungi portal layanan pembayaran perpajakan",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/pembayaran",
+    "keywords": ["Pembayaran pajak"]
+  },
+  {
+    "cluster": 0,
+    "question": "Layanan Administrasi Pajak",
+    "answer": "Kunjungi portal layanan administrasi digital",
+    "link": "https://pajak.go.id/panduan-layanan-pajak/layanan-digital",
+    "keywords": ["Administrasi pajak"]
+  },
+  {
+    "cluster": 0,
+    "question": "Jawaban pertanyaan selain diatas",
+    "answer": "Silakan datang ke meja TPT di KPP terdekat dengan membawa KTP, NPWP, dan email/no HP aktif",
+    "link": null,
+    "keywords": ["-"]
+  }
+]
